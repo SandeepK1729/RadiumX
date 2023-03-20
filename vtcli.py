@@ -22,7 +22,7 @@ def getReport(url):
             res = out[1].get("data").get("attributes").get("stats")
             items = out[1].get("data").get("attributes").get("stats").items()
             
-            print(items)
+            return items
 
     # reads the response
     # takes a list or response object
