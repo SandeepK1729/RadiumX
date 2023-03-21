@@ -2,6 +2,11 @@ const express=require("express");
 const app=new express();
 const dotenv=require('dotenv');
 dotenv.config();
+// const localStorage =require('localStorage')
+// var LocalStorage = require('node-localstorage').LocalStorage,
+// localStorage = new LocalStorage('./scratch');
+
+
 const port=process.env.PORT || 3000;
 app.use(express.static('public'));
 
@@ -9,12 +14,12 @@ app.use(express.static('public'));
 
 //used for storing key value pairs of different properties and their values
 let propValuesObj={};
-
 const path=require("path");
+const { json } = require("express");
 app.use(express.json());
 // given constant port if not working assgin with variable port
-app.listen(3000,()=>{
-    console.log("Server is running at http://localhost:3000/");
+app.listen(3001,()=>{
+    console.log("Server is running at http://localhost:3001/");
 });
 app.get('/',(request,response)=>{
     response.sendFile( __dirname + "/index.html");
@@ -23,6 +28,7 @@ app.get("/url",(request,response)=>{
     // get url details 
     // like name etc
     // and then call procced to function
+    console.log("entered");
     var result = '';
     propValuesObj={};
     const spawn=require("child_process").spawn;
@@ -37,7 +43,7 @@ app.get("/url",(request,response)=>{
         // console.log(resultarr);
 
         // propValueObj used for storing key value pairs of different properties and their values
-        //
+        // 
         // now converting the string into javascript Object format
         for(let i=1;i<resultarr.length;i=i+2)
         {
@@ -47,6 +53,9 @@ app.get("/url",(request,response)=>{
             // console.log(resultarr[i]);
         }
         console.log(propValuesObj);
-        response.sendFile( __dirname + "/index.html");
+        // let stringifyPropValObj=JSON.stringify(propValuesObj);
+        // localStorage.set("PropValobj",JSON.stringify(propValuesObj));
+        // localStorage.setItem("URLENTEREDBYUSER", urlvalue);
+        response.send(propValuesObj);
     })
 });

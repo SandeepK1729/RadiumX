@@ -13,7 +13,7 @@ headers = {
     "x-apikey": conf.get("api_key")
 }
 
-def getReport(url='https://www.facebook.com/'):
+def getReport(url='https://github.com/ytisf/theZoo'):
     # just a pretty print wrapper
     # takes any object
     # returns None
@@ -43,7 +43,7 @@ def getReport(url='https://www.facebook.com/'):
             response = requests.get("https://www.virustotal.com/api/v3/analyses/{}".format(i["data"]["id"]), headers=headers)
             responceObj = response.json()
             while responceObj.get("data").get("attributes").get("status") == "queued":
-                print("waiting for response for {}".format(name))
+                # print("waiting for response for {}".format(name))
                 response = requests.get("https://www.virustotal.com/api/v3/analyses/{}".format(i["data"]["id"]), headers=headers)
                 responceObj = response.json()
                 time.sleep(1.5)
@@ -70,7 +70,7 @@ def getReport(url='https://www.facebook.com/'):
     )
     
 # returns a dictionary of values corresponding to the properties for the URL provided
-url=str(sys.argv[1]);
+# url=str(sys.argv[1]);
 result="";
-result=getReport(url);
+result=getReport();
 print(result)
