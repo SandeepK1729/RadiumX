@@ -10,17 +10,16 @@
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
     <script src="https://kit.fontawesome.com/e7ec6a90f0.js" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="index.css">
-    <link rel="stylesheet" type="text/css" href="table.css"/>  
+    <link rel="stylesheet" href="index.css"> 
 </head>
 <body>
     <div class="main-container col-12 bg-light">
         <u><h1 class="Description">Anomaly detection in Website URLs using Machine Learning.</h1></u>
         <div class="table-container mt-4">
           <div class="input-group mb-3">
-            <input type="text" class="form-control" placeholder="Enter Website URL" aria-label="Recipient's username" aria-describedby="basic-addon2">
+            <input id="inputElement" type="text" class="form-control" placeholder="Enter Website URL" aria-label="Website User Name" aria-describedby="basic-addon2">
             <div class="input-group-append">
-              <button class="btn btn-primary" type="button" id="URLSubmitBTN">Submit</button>
+              <a href="url"><button class="btn btn-primary" type="button" id="URLSubmitBTN">Submit</button></a>
             </div>
           </div>          
           <table>
@@ -86,5 +85,16 @@
         <!-- </table>  -->
         </div>
     </div>
+    <script>
+      var urlvalue="";
+      let inputEle=document.getElementById("inputElement");
+      inputEle.value=localStorage.getItem("URLENTEREDBYUSER");
+      inputEle.addEventListener('keyup',(Event)=>{
+          urlvalue=inputEle.value;
+          localStorage.setItem("URLENTEREDBYUSER", urlvalue);
+          URLVALUEENTEREDBYUSER=urlvalue;
+          console.log(urlvalue);
+      });
+    </script>
 </body>
 </html>

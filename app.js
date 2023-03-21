@@ -5,6 +5,7 @@ dotenv.config();
 const port=process.env.PORT || 3000;
 app.use(express.static('public'));
 
+// let urlValue=document.getElementById("URLSubmitBTN").textContent;
 
 //used for storing key value pairs of different properties and their values
 let propValuesObj={};
@@ -15,7 +16,10 @@ app.use(express.json());
 app.listen(3000,()=>{
     console.log("Server is running at http://localhost:3000/");
 });
-app.get("/",(request,response)=>{
+app.get('/',(request,response)=>{
+    response.sendFile( __dirname + "/index.html");
+});
+app.get("/url",(request,response)=>{
     // get url details 
     // like name etc
     // and then call procced to function
