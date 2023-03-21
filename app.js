@@ -29,11 +29,13 @@ app.get("/url",(request,response)=>{
     // get url details 
     // like name etc
     // and then call procced to function
+    console.log(request.query.url)
+
     console.log("entered");
     var result = '';
     propValuesObj={};
     const spawn=require("child_process").spawn;
-    const process=spawn('python',['./vtcli.py',"https://www.facebook.com/"]);
+    const process=spawn('python',['./vtcli.py',request.query.url]);
     process.stdout.on('data',(data)=>{
         abc=data;
         // data will be in dictionary format as we are getting it from python

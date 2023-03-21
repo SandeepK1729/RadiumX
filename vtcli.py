@@ -70,7 +70,6 @@ def getReport(url='https://github.com/puneethkanna/vardhamantelebot.git'):
     )
     
 # returns a dictionary of values corresponding to the properties for the URL provided
-# url=str(sys.argv[1]);
-result="";
-result=getReport();
+url=str(sys.argv[1])
+result=getReport(url)
 print(result)

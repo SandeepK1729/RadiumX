@@ -65,12 +65,17 @@
           urlvalue=inputEle.value;
           localStorage.setItem("URLENTEREDBYUSER", urlvalue);
           URLVALUEENTEREDBYUSER=urlvalue;
-          console.log(urlvalue);
+          // console.log(inputEle.value);
       });
 
       function PressedButtonElement() {
-        let url = "http://localhost:3001/url";
-        fetch(url)
+        let url = `http://localhost:3001/url?url=${document.getElementById('inputElement').value}`;
+        fetch(url, {
+          method : 'get',
+          headers: {
+              'Content-type': 'application/json; charset=UTF-8'
+            }
+        })
         .then(res => res.text())
         .then(res => JSON.parse(res))
         .then(res => {
