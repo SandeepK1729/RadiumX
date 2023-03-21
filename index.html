@@ -19,7 +19,7 @@
           <div class="input-group mb-3">
             <input id="inputElement" type="text" class="form-control" placeholder="Enter Website URL" aria-label="Website User Name" aria-describedby="basic-addon2">
             <div class="input-group-append">
-              <a href="url"><button class="btn btn-primary" type="button" id="URLSubmitBTN">Submit</button></a>
+              <a onclick="PressedButtonElement()"><button class="btn btn-primary" type="button" id="URLSubmitBTN">Submit</button></a>
             </div>
           </div>          
           <table>
@@ -65,6 +65,12 @@
           URLVALUEENTEREDBYUSER=urlvalue;
           console.log(urlvalue);
       });
+      async function PressedButtonElement()
+      {
+        let propValue="";
+        fetch("http://localhost:3001/url/", {'mode':"no-cors"})
+        .then(res => res.json()).then(res => console.log(propValue));
+      }
     </script>
 </body>
 </html>

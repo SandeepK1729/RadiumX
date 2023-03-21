@@ -13,7 +13,7 @@ headers = {
     "x-apikey": conf.get("api_key")
 }
 
-def getReport(url='https://github.com/ytisf/theZoo'):
+def getReport(url='https://github.com/puneethkanna/vardhamantelebot.git'):
     # just a pretty print wrapper
     # takes any object
     # returns None
