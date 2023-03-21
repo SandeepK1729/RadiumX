@@ -70,3 +70,5 @@ def getReport(url):
     )
     
 # returns a dictionary of values corresponding to the properties for the URL provided
+result=getReport("https://www.facebook.com/");
+print(result)
