@@ -68,3 +68,5 @@ def getReport(url):
             sendUrl(url)
         )
     )
+    
+# returns a dictionary of values corresponding to the properties for the URL provided
