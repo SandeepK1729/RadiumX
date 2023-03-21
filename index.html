@@ -11,6 +11,8 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
     <script src="https://kit.fontawesome.com/e7ec6a90f0.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="index.css"> 
+
+    
 </head>
 <body>
     <div class="main-container col-12 bg-light">
@@ -32,23 +34,23 @@
             <tbody>
               <tr>
                 <th>Harmless</th>
-                <td class="cell-highlight_green">71</td>
+                <td class="cell-highlight_green" id="harmless">71</td>
               </tr>
               <tr >
                 <th>Malicious</th>
-                <td class="cell-highlight_red">5</td>
+                <td class="cell-highlight_red" id="malicious">5</td>
               </tr>
               <tr>
                 <th>Suspicious</th>
-                <td class="cell-highlight_yellow">9</td>
+                <td class="cell-highlight_yellow" id="suspicious">9</td>
               </tr>
               <tr>
                 <th>Undetected</th>
-                <td class="bg-secondary">15</td>
+                <td class="bg-secondary" id="undetected">15</td>
               </tr>
               <tr>
                 <th>TimeOut</th>
-                <td class="bg-primary">0</td>
+                <td class="bg-primary" id="timeout">0</td>
               </tr>
             </tbody>
           </table>
@@ -65,11 +67,21 @@
           URLVALUEENTEREDBYUSER=urlvalue;
           console.log(urlvalue);
       });
-      async function PressedButtonElement()
-      {
-        let propValue="";
-        fetch("http://localhost:3001/url/", {'mode':"no-cors"})
-        .then(res => res.json()).then(res => console.log(propValue));
+
+      function PressedButtonElement() {
+        let url = "http://localhost:3001/url";
+        fetch(url)
+        .then(res => res.text())
+        .then(res => JSON.parse(res))
+        .then(res => {
+            console.log(res);
+
+            document.getElementById("harmless").innerHTML = res['harmless'];
+            document.getElementById("malicious").innerHTML = res['malicious'];
+            document.getElementById("suspicious").innerHTML = res['suspicious'];
+            document.getElementById("undetected").innerHTML = res['undetected'];
+            document.getElementById("timeout").innerHTML = (res['timeout'] == "") ? 0 : res["timeout"];
+        })
       }
     </script>
 </body>

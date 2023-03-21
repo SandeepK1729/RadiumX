@@ -2,6 +2,7 @@ const express=require("express");
 const app=new express();
 const dotenv=require('dotenv');
 dotenv.config();
+
 // const localStorage =require('localStorage')
 // var LocalStorage = require('node-localstorage').LocalStorage,
 // localStorage = new LocalStorage('./scratch');
@@ -9,7 +10,7 @@ dotenv.config();
 
 const port=process.env.PORT || 3000;
 app.use(express.static('public'));
-
+app.use(require('cors')());
 // let urlValue=document.getElementById("URLSubmitBTN").textContent;
 
 //used for storing key value pairs of different properties and their values
@@ -21,9 +22,9 @@ app.use(express.json());
 app.listen(3001,()=>{
     console.log("Server is running at http://localhost:3001/");
 });
-app.get('/',(request,response)=>{
-    response.sendFile( __dirname + "/index.html");
-});
+// app.get('/',(request,response)=>{
+//     response.sendFile( __dirname + "/index.html");
+// });
 app.get("/url",(request,response)=>{
     // get url details 
     // like name etc
@@ -56,6 +57,6 @@ app.get("/url",(request,response)=>{
         // let stringifyPropValObj=JSON.stringify(propValuesObj);
         // localStorage.set("PropValobj",JSON.stringify(propValuesObj));
         // localStorage.setItem("URLENTEREDBYUSER", urlvalue);
-        response.send(propValuesObj);
+        response.json(propValuesObj);
     })
 });
