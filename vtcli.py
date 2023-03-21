@@ -13,7 +13,7 @@ headers = {
     "x-apikey": conf.get("api_key")
 }
 
-def getReport(url):
+def getReport(url='https://www.facebook.com/'):
     # just a pretty print wrapper
     # takes any object
     # returns None
@@ -70,5 +70,6 @@ def getReport(url):
     )
     
 # returns a dictionary of values corresponding to the properties for the URL provided
-result=getReport("https://www.facebook.com/");
+url=str(sys.argv[1]);
+result=getReport(url);
 print(result)
